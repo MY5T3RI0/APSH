@@ -334,7 +334,6 @@ sides = {
 }
 
 side = input("base way = ")
-command = int(input("command = "))
 
 match side:
     case "С":
@@ -346,10 +345,10 @@ match side:
     case "В":
         side = 2
 
-while True:
+for n in range(1, 3):
+    command = int(input("command = "))
     side -= command
     print("Answer: ", sides[side % 4])
-    command = int(input("command = "))
 
 # Homework
 
@@ -492,3 +491,28 @@ if num1 != num2:
         print("Answer:", 2)
 else:
     print("Answer:", 3)
+
+# 10
+
+print("Дано целое число. Вывести его строку-описание вида «отрицательное"
+      " четное число», «нулевое число», «положительное нечетное число» и т."
+      " д. ")
+
+num = input("num = ")
+
+print("Answer: ", end=" ")
+
+if int(num) < 0:
+    print("отрицательное", end=" ")
+elif int(num) > 0:
+    print("положительное", end=" ")
+else:
+    print("нулевое число", end=" ")
+    exit(0)
+
+if int(num) % 2 == 0:
+    print("четное", end=" ")
+else:
+    print("нечетное", end=" ")
+
+print("число")
