@@ -25,6 +25,7 @@ print("Дано целое число N (> 0). Найти значение вы�
 N = int(input("N = "))
 sum = 0
 k = -1
+
 for n in range(1, N + 1, 1):
     k *= -1
     sum += k * (1 + n/10)
@@ -36,13 +37,11 @@ print("Дано целое число N (> 2). Последовательнос�
       "определяется следующим образом: A1 = 1, A2 = 2, A3 = 3, AK = AK–1 +"
       "AK–2 – 2·AK–3, K = 4, 5, … . Вывести элементы A1, A2, …, AN")
 
-
 def getAk(k):
     if k <= 3:
         return k
     else:
         return getAk(k-1) + getAk(k-2) - 2 * getAk(k-3)
-
 
 N = int(input("N = "))
 print("Answer: ")
@@ -123,7 +122,7 @@ while f1 <= N:
     f3 = f1 + f2
 print(False)
 
-# 13
+# 8
 
 print("Дано целое число N и набор из N вещественных чисел. Вывести в том"
       " же порядке округленные значения всех чисел из данного набора(как целые"
@@ -135,20 +134,16 @@ sum = 0
 numbers = []
 print("Answer: ")
 
-while k < N:
-    numbers.append(random.uniform(1, 100))
-    k += 1
-
 k = 0
 
 while k < N:
-    temp = int(numbers[k])
+    temp = int(random.uniform(1, 100))
     print(temp)
     sum += temp
     k += 1
 print("sum = ", sum)
 
-# 14
+# 9
 
 print("Дано целое число N и набор из N целых чисел. Вывести в том же"
       " порядке номера всех нечетных чисел из данного набора и количество K"
@@ -157,45 +152,38 @@ print("Дано целое число N и набор из N целых чисе
 N = int(input("N = "))
 k = 0
 count = 0
-numbers = []
 print("Answer: ")
-
-while k < N:
-    numbers.append(random.randint(1, 100))
-    k += 1
 
 k = 0
 
 while k < N:
-    if numbers[k] % 2 == 1:
-        print(numbers[k])
+    temp = random.randint(1, 100)
+    if temp % 2 == 1:
+        print(k)
         count += 1
     k += 1
 print("count = ", count)
 
-# 15
+# 10
 
 print("Дано целое число N и набор из N целых чисел, упорядоченный по"
-      " возрастанию. Данный набор может содержать одинаковыеэлементы."
+      " возрастанию. Данный набор может содержать одинаковые элементы."
       " Вывести в том же порядке все различные элементы данного набора.")
 
 N = int(input("N = "))
 k = 0
-numbers = []
 print("Answer: ")
-
-while k < N:
-    numbers.append(random.randint(1, 100))
-    k += 1
-
+current = 99999
 k = 0
 
 while k < N:
-    if numbers.count(numbers[k]) == 1:
-        print(numbers[k])
+    previous = current
+    current = int(input("num = "))
+    if previous != current:
+        print(current)
     k += 1
 
-# 16
+# 11
 
 print("Дано целое число N и набор из N целых чисел, содержащий по крайней"
       " мере два нуля. Вывести сумму чисел из данного набора,"
@@ -205,29 +193,21 @@ print("Дано целое число N и набор из N целых чисе
 N = int(input("N = "))
 k = 0
 sum = 0
-flag = False
-numbers = []
-print("Answer: ")
-
-while k < N:
-    numbers.append(random.randint(0, 100))
-    k += 1
-
-numbers[random.randint(0, k-1)] = 0
-numbers[random.randint(0, k-1)] = 0
-
+tempsum = 0
 k = 0
 
 while k < N:
-    if numbers[k] == 0:
-        flag = not (flag)
-    if flag == True:
-        sum += numbers[k]
+    temp = int(input("num = "))
+    if temp == 0:
+        sum = tempsum
+        tempsum = 0
+    tempsum += temp
     k += 1
 
+print("Answer: ")
 print("sum = ", sum)
 
-# 17
+# 12
 
 print("Даны целые числа K, N, а также K наборов целых чисел по N элементов"
       " в каждом наборе. Для каждого набора вывести номер его первого"
@@ -237,29 +217,21 @@ N = int(input("N = "))
 K = int(input("K = "))
 i = 0
 j = 0
-numbers = [[0] * K for i in range(N)]
 print("Answer: ")
 
 while i < K:
     while j < N:
-        numbers[i][j] = random.randint(1, 10)
-        j += 1
-    i += 1
-
-i = 0
-j = 0
-
-while i < K:
-    while j < N:
-        if numbers[i][j] == 2:
+        temp = random.randint(0, 100)
+        if temp == 2:
             print(j)
+            break
         elif j == N-1:
             print(0)
         j += 1
     i += 1
     j = 0
 
-# 18
+# 13
 
 print("Дано целое число N, а также K наборов ненулевых целых чисел."
       " Признаком завершения каждого набора является число 0. Для каждого"
@@ -270,30 +242,20 @@ K = int(input("K = "))
 i = 0
 j = 0
 sum = 0
-numbers = []
 
-A = []
 while i < K:
-    row = input('numbers[{}] = '.format(i)).split()
-    while j < len(row):
-        row[j] = int(row[j])
+    temp = int(input("num ="))
+    while temp != 0:
+        temp = int(input("num ="))
         j += 1
-    numbers.append(row)
+        sum += 1
+    print(j)
     i += 1
     j = 0
 
-i = 0
-j = 0
+print(sum)
 
-print("Answer: ")
-
-while i < K:
-    print('[{}] {}'.format(i, len(numbers[i]) - 1))
-    sum += len(numbers[i]) - 1
-    i += 1
-print('total count = {}'.format(sum))
-
-# 19
+# 14
 
 print("Дано целое число K, а также K наборов ненулевых целых чисел."
       " Каждый набор содержит не менее двух элементов, признаком его"
@@ -303,27 +265,26 @@ print("Дано целое число K, а также K наборов нену
 K = int(input("K = "))
 i = 0
 j = 0
-flag = False
-sum = 0
-numbers = []
+flag = True
+count = 0
 
-A = []
 while i < K:
-    row = input('numbers[{}] = '.format(i)).split()
-    while j < len(row):
-        row[j] = int(row[j])
-        if int(row[j-1]) > row[j] and row[j] != 0:
-            flag = True
+    temp = int(input("num ="))
+    while temp != 0:
+        previous = temp
+        temp = int(input("num ="))
+        if temp != 0 and temp < previous:
+            flag = False
         j += 1
-    if flag == False:
-        sum += 1
-    flag = False
-    numbers.append(row)
+    if flag:
+        count += 1
+    flag = True
     i += 1
     j = 0
-print("Answer: ", sum)
 
-# 20
+print("Answer: ", count)
+
+# 15
 
 print("Дано целое число K, а также K наборов ненулевых целых чисел."
       " Каждый набор содержит не менее двух элементов, признаком его"
@@ -336,34 +297,30 @@ print("Дано целое число K, а также K наборов нену
 K = int(input("K = "))
 i = 0
 j = 0
-increase = False
-decrease = False
-numbers = []
+increase = True
+decrease = True
 
-A = []
 while i < K:
-    row = input('numbers[{}] = '.format(i)).split()
-    while j < len(row):
-        row[j] = int(row[j])
-        if int(row[j-1]) > row[j] and row[j] != 0:
-            increase = True
-        elif int(row[j-1]) < row[j] and row[j] != 0 and j != 0:
-            decrease = True
+    temp = int(input("num ="))
+    while temp != 0:
+        previous = temp
+        temp = int(input("num ="))
+        if temp != 0 and temp < previous:
+            increase = False
+        if temp > previous:
+            decrease = False
         j += 1
-    if increase == False:
-        print('[{}] {}'.format(i, 1))
-    elif decrease == False:
-        print('[{}] {}'.format(i, -1))
+    if increase:
+        print(1)
+    elif decrease:
+        print(-1)
     else:
-        print('[{}] {}'.format(i, 0))
-    increase = False
-    decrease = False
-    numbers.append(row)
+        print(0)
+    increase = True
+    decrease = True
     i += 1
-    j = 0
-print("Answer: ", sum)
 
-# 21
+# 16
 
 print("Дано целое число N ( > 2) и набор из N вещественных чисел. Набор"
       " называется пилообразным, если каждый его внутренний элемент либо"
@@ -372,13 +329,18 @@ print("Дано целое число N ( > 2) и набор из N вещест
       "в противном случае вывести номер первого элемента, не являющегося"
       " зубцом.")
 
-numbers = input("N = ").split()
-i = 0
+preprevious = 0
+previous = 0
 
-while i < len(numbers):
-    numbers[i] = float(numbers[i])
+i = 0
+N = int(input("N = "))
+while i < N:
+    if i > 0:
+        preprevious = previous
+        previous = temp
+    temp = float(input("num = "))
     if i > 1:
-        if not (numbers[i-1] < numbers[i-2] and numbers[i-1] < numbers[i] or numbers[i-1] > numbers[i-2] and numbers[i-1] > numbers[i]):
+        if not (previous < preprevious and previous < temp or previous > preprevious and previous > temp):
             print("Answer: ", i)
             quit()
     i += 1
